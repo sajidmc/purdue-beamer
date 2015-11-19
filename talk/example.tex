@@ -1,53 +1,68 @@
-\documentclass[english]{beamer} %,handout
-\usepackage{amsmath}
-\usepackage{graphicx}
+% -*- root: main.tex -*-
+% Sep. 2015
+% Purdue University
+% Modified by Sajid Choudhury http://engineering.purdue.edu/~sajidmc
 
-\makeatletter
+\documentclass{beamer}
+%\documentclass[10pt,handout,hyperref={pdfpagelabels=false}]{beamer} %use for handouts
+%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape] %handout 4 per page
 
+\newcommand{\mylogo}{DP_logo}   %uncomment this line for the Discovery Park logo
+%\newcommand{\mylogo}{Purdue_Sig} %uncomment this line for the Purdue logo
+
+\newcommand{\headerlogo}{\mylogo_white} %for discovery park logo
+\newcommand{\frontpagelogo}{\mylogo} %for discovery park logo
+\usepackage{textpos} % package for the positioning
+\usepackage{lmodern} %font fix
 \usepackage{listings}
 \usetheme{Boadilla}
-
-\setbeamercovered{transparent}
-
 \usecolortheme{purdue}
 
-\usepackage{babel}
+%header image - position the logo
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{\textwidth}(0.0cm,-1.1cm)
+\begin{flushright}
+\includegraphics[height=0.5cm,keepaspectratio]{\headerlogo.png}
+\end{flushright}
+\end{textblock*}}
 
-\begin{document}
 
-\title[HMMs \& CRFs]{Hidden Markov Models \&\\
-Conditional Random Fields}
-
-\author{Andrei Barbu}
+\title{LaTeX Template}   
+\author{S Choudhury, A Barbu} 
 \institute[Purdue University]
 {
   School of Electrical and Computer Engineering\\
+  Birck Nanotechnology Center
   Purdue University
 }
+\date{\today} 
 
-\begin{frame}
-  \titlepage
+\begin{document}
+
+\frame{
+\titlepage
   \begin{center}
-    \includegraphics[scale=0.6]{PU_signature_eps}
+    \includegraphics[width=0.3\textwidth]{\frontpagelogo}
   \end{center}
+} 
+
+\begin{frame}<*>{Outline}
+		\frametitle{Table of contents}
+		\tableofcontents
 \end{frame}
 
+\section{Introduction}
+\begin{frame}<*>{Introduction}
+		This \LaTeX template is based on the official Purdue color guide. \\
+		Edit the {$\backslash$\tt{mylogo}} command to get the Purdue or Discovery park logo on the top. 
+\end{frame}
 \newcommand{\Gaussian}{\rput(0,-0.35){\psset{yunit=0.8cm,xunit=0.3}
      \psGauss[linecolor=red, linewidth=0.8pt, sigma=0.5]{-1.5}{1.5}}}
 \def\dedge{\ncline[linestyle=dashed]}
 \def\omitnode{\Tr*[edge=\dedge]{}}
 
-\begin{frame}[<+->]{History}
-\begin{itemize}
-\item Developed by Markov in 1906
-\item Markov was a disciple of Chebyshev  along with Lyapunov
-\item Introduced for no practical reason, except maybe to spite Nekrasov\\
-due to the dispute over the Weak Law of Large Numbers
-\item Within 1 year it was being used to clear up issues in thermodynamics
-\end{itemize}
-\end{frame}
-
-\begin{frame}[<+->]{Markov Models}
+\section{Equation Example}
+\begin{frame}[<+->]{Equation Example:Markov Models}
 \begin{itemize}
 \item Process with the Markov property: $P(s_{t+1}|s_{t},...,s_{0})=P(s_{t+1}|s_{t})$
 \item Process with discrete time\end{itemize}
@@ -71,5 +86,4 @@ N_{1}(t+1)\end{array}\right]$
 \end{exampleblock}
 \end{uncoverenv}%{}
 \end{frame}
-
 \end{document}
